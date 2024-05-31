@@ -1,11 +1,12 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
-import json 
-import telebot 
-import random 
-import logging 
+import json
+import telebot
+import random
+import logging
 
 
 logging.basicConfig(level=logging.INFO)
@@ -21,7 +22,8 @@ def scrape_urls_and_titles():
     options.add_argument("start-maximized")
     options.binary_location = '/app/.apt/usr/bin/google-chrome'
 
-    driver = webdriver.Chrome(executable_path='/app/.chromedriver/bin/chromedriver', options=options)
+    service = Service(executable_path='/app/.chromedriver/bin/chromedriver')
+    driver = webdriver.Chrome(service=service, options=options)
     driver.get('https://hype.replicate.dev/')
 
     time.sleep(10)
