@@ -15,10 +15,13 @@ def scrape_urls_and_titles():
     logger.info("Scraping URLs and titles...")
     options = Options()
     options.add_argument("--headless")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("start-maximized")
+    options.binary_location = '/app/.apt/usr/bin/google-chrome'
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(executable_path='/app/.chromedriver/bin/chromedriver', options=options)
     driver.get('https://hype.replicate.dev/')
 
     time.sleep(10)
