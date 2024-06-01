@@ -83,3 +83,5 @@ def send_mes():
         time.sleep(120)
 
 send_mes()
+
+bot.infinity_polling()
